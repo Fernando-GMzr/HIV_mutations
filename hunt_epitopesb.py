@@ -73,23 +73,25 @@ def hunt_mutations(db_mut, number_index,sequence):
     return epitope_wild,epitope_scape,hla_scape, position_wild,position_scape,position_asteris,position_metionina,Patient, origin,year_sample
 
 mutations.head()    
-def filters_mut_scape(db_mut,hla_scape,Patient,position_scape,position_wild):
+##This function filters the mutations that match with HLA related to mutation scape
+def filters_mut_scape(db_mut,hla_scape,Patient):#,position_scape,position_wild):
+    HLA_df= db_mut[db_mut['HLA']== hla_scape] #only stayed mutations equals to secuences with mutation scape
+    HLA_patient_df = HLA_df[HLA_df.Patient_ID.astype(str)== str(Patient)] #the mutations pass to a new filter that only retain sequence related to pacient
+    return HLA_patient_df
+
+####This function filters the mutations that match with HLA related to mutation wild
+def filters_mut(db_mut,hla_scape,Patient):#,position_scape,position_wild):
     HLA_df= db_mut[db_mut['HLA']== hla_scape]
     HLA_patient_df = HLA_df[HLA_df.Patient_ID.astype(str)== str(Patient)]
     return HLA_patient_df
 
-##defino la funcion de filtro
-def filters_mut(db_mut,hla_scape,Patient,position_scape,position_wild):
-    HLA_df= db_mut[db_mut['HLA']== hla_scape]
-    HLA_patient_df = HLA_df[HLA_df.Patient_ID.astype(str)== str(Patient)]
-    return HLA_patient_df
 
 
-
-
-
+ """ The followed functions classify the secuence from data information obtain previusly.
+ """
 def write_scape(epitope_scape,position_scape,count_pattern_sc,hla_scape, position_asteris, position_metionina,   HLA_patient_df):
     if (position_scape != -1) and (len(HLA_patient_df) != 0):
+        #the folowed sentence prevent that a mutation 
         if ( epitope_scape not in count_pattern_sc.keys()) or ( epitope_scape in count_pattern_sc.keys() and  hla_scape not in count_pattern_sc[epitope_scape]):
             if position_metionina== 0:
                 if position_asteris != -1:
