@@ -23,7 +23,7 @@ from Bio import SeqUtils
 import csv
 import sys
 import pandas as pd
-
+import os
 import itertools
 import re
 
@@ -35,9 +35,9 @@ os.listdir()
 os.chdir('/home/bioinformatica/Documentos/Documentos/nuevos')
 os.chdir('/home/bioinfo/Documents/Epitopes_pipi')
 
-os.chdir('/home/fernando/Documentos/Epitopes_pipi')
-#Functions
-
+os.chdir('/home/fernando/Documentos/Epitopes_pipi/redesign_inmuno_hiv')
+###Functions
+##obtain fasta sequences from directory specified
 def get_fastas(directorio):
     lista = []
     for root, dirs, files in os.walk(directorio): #camino por el directorio
@@ -46,7 +46,9 @@ def get_fastas(directorio):
                 lista.append(file)
                 
     return lista
-
+## Detect a mutation, their type, their position, position of start and stop of ORF.
+##Need a mutation database and index sequence to iterate in each cell to the WT and variant epitope columns.
+##return variables with information if was detected signals of mutations wild and variants with their corresponding information of position anda origin.
 def hunt_mutations(db_mut, number_index,sequence):
     epitope_wild = db_mut["Epitope_WT"].iloc[number_index]
     epitope_scape = db_mut["Variant_Epitope"].iloc[number_index]
@@ -57,6 +59,7 @@ def hunt_mutations(db_mut, number_index,sequence):
     position_metionina = sequence.seq.find(str('M'))
     ids =  sequence.id
     split = ids.split('-')
+    ##process of header to obtain information(code-cell origin and year) of each pacient:
     if len(split) == 3:
         Patient = ids.split('-')[0]
         origin = ids.split('-')[1]
@@ -327,14 +330,17 @@ def dict_epitopes(dictionary, hla, epitope):
     
 #mut = open('ctl_variant_modified.csv')
 #open de HLA information
+#Open de epitopes info table.
 mutation = open('epitopes_corregido_2.csv')
 mutations = pd.read_csv(mutation)
 mutations.head()
+#Get the directory with fasta files 
 directorio = os.getcwd()
 lista_fasta = get_fastas(directorio)
 print(lista_fasta)
 lista_fasta = lista_fasta[::-1]
 #Gen = lista_fasta
+#Create dataset and dictionary to save data from protein analisis
 df = pd.DataFrame()  
 dicgenes = {}
 c = 0
@@ -344,7 +350,7 @@ for l, Gen in enumerate(lista_fasta, start= 1):
     fasta = SeqIO.parse(Gen,'fasta') #parse
 
     print(f'entro con el gen {Gen}')
-    for n, sequence in enumerate(fasta , start= 2975):
+    for n, sequence in enumerate(fasta):# , start= 2975):
         #print(f'comenzando la sequencia {sequence} numero {n}')
         #dic = {}
         gen = Gen.split('_')[0] 
