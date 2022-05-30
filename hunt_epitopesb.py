@@ -46,7 +46,8 @@ def get_fastas(directorio):
                 lista.append(file)
                 
     return lista
-## Detect a mutation, their type, their position, position of start and stop of ORF.
+
+##Detect a mutation, their type, their position, position of start and stop of ORF.
 ##Need a mutation database and index sequence to iterate in each cell to the WT and variant epitope columns.
 ##return variables with information if was detected signals of mutations wild and variants with their corresponding information of position anda origin.
 def hunt_mutations(db_mut, number_index,sequence):
