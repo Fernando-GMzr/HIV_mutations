@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+,#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
 Created on Thu Mar 25 04:23:01 2021
@@ -40,7 +40,7 @@ os.chdir('/home/fernando/Documentos/Epitopes_pipi')
 os.getcwd()
 os.listdir()
 os.chdir('/home/bioinformatica/Documentos/Documentos/nuevos')
-
+os.chdir('/home/fernando/Documentos/Epitopes_pipi/redesign_inmuno_hiv')
 #Functions
 
 def get_fastas(directorio):

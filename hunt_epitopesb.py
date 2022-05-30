@@ -350,15 +350,15 @@ c = 0
 for l, Gen in enumerate(lista_fasta, start= 1):
     #print(str(gen))
     fasta = SeqIO.parse(Gen,'fasta') #parse
-
+    gen = Gen.split('_')[0] 
+    mutations['Protein'] = mutations['Protein'].str.lower()
+    mutations_gen = mutations[mutations.Protein.isin([gen])]
+    mutations_gen = mutations_gen.copy()
     print(f'entro con el gen {Gen}')
     for n, sequence in enumerate(fasta):# , start= 2975):
         #print(f'comenzando la sequencia {sequence} numero {n}')
         #dic = {}
-        gen = Gen.split('_')[0] 
-        mutations['Protein'] = mutations['Protein'].str.lower()
-        mutations_gen = mutations[mutations.Protein.isin([gen])]
-        mutations_gen = mutations_gen.copy()
+        
         len(mutations_gen)
         count_pattern_sc = {}
         count_pattern_wd = {}
@@ -366,7 +366,7 @@ for l, Gen in enumerate(lista_fasta, start= 1):
             ###function captar posiciones
                   
             epitope_wild,epitope_scape,hla_scape,position_wild,position_scape,position_asteris,position_metionina,Patient, origin,year_sample = hunt_mutations(mutations_gen,index,sequence)
-            HLA_patient_df = filters_mut(mutations_gen,hla_scape,Patient,position_scape,position_wild)
+            HLA_patient_df = filters_mut(mutations_gen,hla_scape,Patient)#,position_scape,position_wild)
             #print(f'el paciente {Patient} tiene un df de {len(HLA_patient_df)}')
             dict_scape = write_scape(epitope_scape, position_scape, count_pattern_sc,hla_scape, position_asteris, position_metionina, HLA_patient_df)
             #print(f'diccionario scap {dict_scape} ')
@@ -511,7 +511,7 @@ for l, Gen in enumerate(lista_fasta, start= 1):
 #HLA_df= mutations_gen[mutations_gen['HLA']== hla_scape]
 #HLA_patient_df = HLA_df[HLA_df.Patient_ID.astype(str)== str(Patient)]
 print('grabando...')
-df.to_csv('mutation_18M2.csv')
+df.to_csv('mutation_29may.csv')
 
 ######suspension temporal
 
