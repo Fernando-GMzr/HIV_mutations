@@ -1,4 +1,4 @@
-,Epitope_recover,pattern_recover,hla,position on the sequence,Genes,pattern,sequences,position,origin,Donor id
+,Epitope_type,pattern_recover,hla,position on the sequence,Genes,pattern,sequences,position,origin,Donor id
 0,wild_variant,yes,B*35,without metionine-stop,pol,TVLDVGDAY,1292-17-N-11,262,N,1292
 1,wild_variant,yes,B*35,without metionine-stop,pol,VPLDEDFRKY,1292-17-N-11,273,N,1292
 2,wild_variant,yes,B*35,without metionine-stop,pol,TVLDVGDAY,1292-17-N-13,262,N,1292
@@ -19159,4 +19159,4 @@
 19157,wild_variant,yes,B*35,correct orf,gag,WASRELERF,1292-PBTM-51,35,PBTM,1292
 19158,scape_variant,yes,B*35,correct orf,gag,PPIPVGEIY,1292-PBTM-51,253,PBTM,1292
 19159,wild_variant,yes,B*35,after orf,gag,WASRELERF,1292-PBTM-52,35,PBTM,1292
-19160,Not found wild_variant,Not found,no,Not found,gag,WASRELERF,1292-PBTM-52,Not found,PBTM,1292
+19160,wild_variant,Not found wild_variant,no,Not found,gag,WASRELERF,1292-PBTM-52,Not found,PBTM,1292
