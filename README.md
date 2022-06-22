@@ -12,7 +12,7 @@ The script search motifs related to epitopes described for hiv proteins (accordl
 in a aminoacidic multifasta of HIV sequences.For this, in each protein is identified the code of donnor, and used to filter the dataset of Donnor HLA information, consequently, each variant and wild epitope motifs is searched in each secuences.
 Once time that motif is found, a function evaluate characteristic related to gene expression of protein(relation of motif with start and stop codons). Thus, each secuence if classified into six possibilites.
 Afterly, this will write in a output dataframe whose information show the type of motif epitope identified, the HLA, header of secuence, position detected and the category of expression of each secuences. The patterns motifs related to HLA donnor not found, are counting and writted in the dataframe for future statistic calculations.
->>>>>>> a7483bc957e228e157d2e32eafe799d69186baa6
+
 
 ## Installation and getting started
 
