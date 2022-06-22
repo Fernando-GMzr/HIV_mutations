@@ -1,5 +1,5 @@
 
-=======
+
 # HIV_mutations_scape
 
 
@@ -11,9 +11,6 @@ Part of this script was used to obtain the results of HIV protein mutation resul
 The script search motifs related to epitopes described for hiv proteins (accordly the information of " DB")
 in a aminoacidic multifasta of HIV sequences.For this, in each protein is identified the code of donnor, and used to filter the dataset of Donnor HLA information, consequently, each variant and wild epitope motifs is searched in each secuences.
 Once time that motif is found, a function evaluate characteristic related to gene expression of protein(relation of motif with start and stop codons). Thus, each secuence if classified into six possibilites.
-<<<<<<< HEAD
-Afterly, this will write in a output dataframe whose information show the type of motif epitope identified, the HLA, header of secuence, position detected and the category of expression of each secuences. The patterns motifs related to HLA donnor not found, are counting and writted in the dataframe for futuro statistic calculations.
-=======
 Afterly, this will write in a output dataframe whose information show the type of motif epitope identified, the HLA, header of secuence, position detected and the category of expression of each secuences. The patterns motifs related to HLA donnor not found, are counting and writted in the dataframe for future statistic calculations.
 >>>>>>> a7483bc957e228e157d2e32eafe799d69186baa6
 
@@ -36,8 +33,7 @@ To run the script it is necessary to have the modules installed:
 
 - itertools
 - re
-<<<<<<< HEAD
-=======
+
 ## Structure of data input
 
 *The input format maintains the following structure:*
@@ -66,7 +62,6 @@ To run the script it is necessary to have the modules installed:
 *The metadata information of proteins, motifs epitope and hla was obtain from "HIV database", where the original database was transformed to filter and match with the inmunogenic charachteristic of each Donnor*.
 
 
->>>>>>> a7483bc957e228e157d2e32eafe799d69186baa6
 
 ### Running
 
@@ -83,7 +78,7 @@ HIV_search_patterns.py "input_HLA_donnor.csv" "output_mutation_found.csv"
 |--------------|-----------------|------|--------------------------|-------|------------|--------------|----------|--------|----------|
 | wild_variant | yes             | B*35 | silent                   | pol   | TVLDVGDAY  | 1292-17-N-23 | 262.0    | N      | 1292     |
 | wild_variant | yes             | B*35 | silent                   | pol   | VPLDEDFRKY | 1292-17-N-23 | 273.0    | N      | 1292     |
->>>>>>> a7483bc957e228e157d2e32eafe799d69186baa6
+
 
 ## Features
 
