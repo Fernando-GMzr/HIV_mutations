@@ -70,8 +70,7 @@ In a directory containing fasta files and database in csv, run:
 ```python
 HIV_search_patterns.py "input_HLA_donnor.csv" "output_mutation_found.csv"
 ```
-<<<<<<< HEAD
-=======
+
 ## Structure of data output
 
 | Epitope_type | pattern_recover | hla  | position on the sequence | Genes | pattern    | sequences    | position | origin | Donor id |
