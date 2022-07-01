@@ -10,7 +10,7 @@ import sys
 import os   
 
 os.chdir('/home/fernando/Documentos/Epitopes_pipi/redesign_inmuno_hiv')
-dataset = pd.read_csv('output_17jun.csv')
+dataset = pd.read_csv('patterns_1jul.csv')
 
 g=["gag"]
 gag = dataset[dataset.Genes.isin(g)]
@@ -18,11 +18,12 @@ gag['Genes']
 p=['pol']
 pol.columns
 pol= dataset[dataset.Genes.isin(p)]
-filg= ['without stop']
+filg= ["correct orf",'without stop']
 gagF =gag[gag.pattern_pos_seq.isin(filg)]
 pol.columns
-filP = ['without_met_Pattern_before_stp','without_met_Pattern_after_stp']
+filP = ['without_met_Pattern_before_stp',"without start-stop"]
 polF =pol[pol.pattern_pos_seq.isin(filP)]
 
 len(gagF)
-df3=pd.merge(df1,df2, on='Courses', how='left')
+df3=pd.merge(gagF,polF, on='sequences', how='left', indicator= True)
+df3.to_csv("patterns_matched1jul.csv")
