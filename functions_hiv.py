@@ -159,7 +159,7 @@ def write_wild(position_wild,hla_scape, position_asteris, position_metionina,   
 def dict_epitopes(dictionary, hla, epitope):   
     if epitope not in dictionary.keys():
         dictionary[epitope] = hla
-    if epitope  in dictionary.keys() and hla not in dictionary[epitope]: 
+    if epitope  in dictionary.keys() and (hla not in dictionary[epitope]): 
         dictionary[epitope] = hla
     return dictionary                                      
 
