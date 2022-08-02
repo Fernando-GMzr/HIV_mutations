@@ -36,7 +36,7 @@ To run the script it is necessary to have the modules installed:
 | 1756       | A.allele.1 | A*03 | KIRLRPGGQ       | Gag     | RLRPGGKKK  |
 | 1756       | A.allele.1 | A*03 | KIRLRPGGQ       | Gag     | RLRPGGKKKY |
 
-*
+*This data set comes from merging the information of the HLA donors with the dataset of epitope patterns of the "los alamos" database.*
 
 ### Columns description
 
