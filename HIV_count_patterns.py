@@ -30,17 +30,14 @@ Gen = lista_fasta
 df = pd.DataFrame()  
 dicgenes = {}
 c = 0
-#count_pattern = []
+
 for l, Gen in enumerate(lista_fasta):
     #print(str(gen))
     fasta = SeqIO.parse(Gen,'fasta') #parse
     
-    print(f'entro con el gen {Gen}')
+    print(f' Analyzing the gene {Gen} ...')
     for n, sequence in enumerate(fasta):
-        #print(f'comenzando la sequencia {sequence} numero {n}')
-        #dic = {}
         gen = Gen.split('_')[0] 
-        #gen  = "gag"
         mutations['Protein'] = mutations['Protein'].str.lower()
         mutations_gen = mutations[mutations.Protein.isin([gen])]
         ids =  sequence.id
@@ -54,36 +51,27 @@ for l, Gen in enumerate(lista_fasta):
             Patient =str(Patient)
             year_sample = ids.split('-')[0]
             origin = ids.split('-')[2]
-        #mutations_gen = mutations_gen.copy()
-        #len(mutations_gen)
+        
         count_pattern_sc = {}
         count_pattern_wd = {}
-        HLA_patient_df = filters_mut(mutations_gen,Patient )
-        #c = mutations_gen[mutations_gen.Patient_ID == 1292]#.unique()
-        #c["HLA"].unique()
+        HLA_patient_df = filters_mut(mutations_gen,Patient ) #filter HLA pattern related to donnor information
+     
         for (index, row)  in enumerate(HLA_patient_df.iterrows()):
-            ###function captar posiciones
+            ### Obtains the position of the patterns
             
             epitope_wild,epitope_scape,hla_scape, position_wild,position_scape,position_asteris,position_metionina = hunt_mutations(HLA_patient_df,index,sequence)
-            #hla_scape,Patient,position_scape,position_wild)
-            #print(f'el paciente {Patient} tiene un df de {len(HLA_patient_df)}')
+            
             dict_scape = write_scape(position_scape, hla_scape, position_asteris, position_metionina, HLA_patient_df,epitope_scape, count_pattern_sc)
-            #print(f'diccionario scap {dict_scape} ')
+           
             
             
             dict_wild = write_wild(position_wild,hla_scape, position_asteris, position_metionina,   HLA_patient_df, epitope_wild, count_pattern_wd)
             
-            #write_rows(write_scape,write_wild,epitope_wild,epitope_scape,hla_scape, position_wild,position_scape,position_asteris,position_metionina,c)
             
-            #print(f' diccionario wild {dict_wild}')
             if len(dict_scape) != 0:            
                 if "correct_orf" in dict_scape.keys():
                     count_pattern_sc = dict_epitopes(count_pattern_sc, hla_scape, epitope_scape) #.append(hla_scape)
-                    #count_pattern_sc.append(epitope_scape) 
                     df.loc[c, 'Epitope_type'] = 'scape_variant'
-                    #pos_raw_hla_df= HLA_patient_df['HLA'].values.tolist().index(hla_scape)
-                    #lista_alelos = HLA_patient_df['allele'].values.tolist()
-                    #df.loc[c, 'allele'] = lista_alelos[ pos_raw_hla_df]
                     df.loc[c, 'pattern_recover'] = "yes"
                     df.loc[c, 'pattern_pos_seq'] = 'correct orf'
                     df.loc[c, 'Genes'] = gen
@@ -96,11 +84,7 @@ for l, Gen in enumerate(lista_fasta):
                     c += 1
                 if "after_orf" in dict_scape.keys():
                     count_pattern_sc = dict_epitopes(count_pattern_sc, hla_scape, epitope_scape)
-                    #count_pattern_sc.append(epitope_scape) 
                     df.loc[c, 'Epitope_type'] = 'scape_variant'
-                    #os_raw_hla_df= HLA_patient_df['HLA'].values.tolist().index(hla_scape)
-                    #lista_alelos = HLA_patient_df['allele'].values.tolist()
-                    #df.loc[c, 'allele'] = lista_alelos[ pos_raw_hla_df]
                     df.loc[c, 'pattern_recover'] = "yes"
                     df.loc[c, 'pattern_pos_seq'] = 'after orf'
                     df.loc[c, 'Genes'] = gen
@@ -113,11 +97,9 @@ for l, Gen in enumerate(lista_fasta):
                     c += 1
                 if "without_stop" in dict_scape.keys():
                     count_pattern_sc = dict_epitopes(count_pattern_sc, hla_scape, epitope_scape)
-                    #count_pattern_sc.append(epitope_scape) 
+                     
                     df.loc[c, 'Epitope_type'] = 'scape_variant'
-                    #pos_raw_hla_df= HLA_patient_df['HLA'].values.tolist().index(hla_scape)
-                    #lista_alelos = HLA_patient_df['allele'].values.tolist()
-                    #df.loc[c, 'allele'] = lista_alelos[ pos_raw_hla_df]
+                    
                     df.loc[c, 'pattern_recover'] = "yes"
                     df.loc[c, 'pattern_pos_seq'] = 'without stop'
                     df.loc[c, 'Genes'] = gen
@@ -130,11 +112,9 @@ for l, Gen in enumerate(lista_fasta):
                     c += 1
                 if "without_met_Pattern_before_stp" in dict_scape.keys():
                     count_pattern_sc = dict_epitopes(count_pattern_sc, hla_scape, epitope_scape)
-                    #count_pattern_sc.append(epitope_scape) 
+                     
                     df.loc[c, 'Epitope_type'] = 'scape_variant'
-                    #pos_raw_hla_df= HLA_patient_df['HLA'].values.tolist().index(hla_scape)
-                    #lista_alelos = HLA_patient_df['allele'].values.tolist()
-                    #df.loc[c, 'allele'] = lista_alelos[ pos_raw_hla_df]
+                    
                     df.loc[c, 'pattern_recover'] = "yes"
                     df.loc[c, 'pattern_pos_seq'] = 'without_met_Pattern_before_stp'
                     df.loc[c, 'Genes'] = gen
@@ -147,11 +127,9 @@ for l, Gen in enumerate(lista_fasta):
                     c += 1
                 if "without_met_Pattern_after_stp" in dict_scape.keys():
                     count_pattern_sc = dict_epitopes(count_pattern_sc, hla_scape, epitope_scape)
-                    #count_pattern_sc.append(epitope_scape)                                                 
+                                                                   
                     df.loc[c, 'Epitope_type'] = 'scape_variant'
-                    #pos_raw_hla_df= HLA_patient_df['HLA'].values.tolist().index(hla_scape)
-                    #lista_alelos = HLA_patient_df['allele'].values.tolist()
-                    #df.loc[c, 'allele'] = lista_alelos[ pos_raw_hla_df]
+                    
                     df.loc[c, 'pattern_recover'] = "yes"
                     df.loc[c, 'pattern_pos_seq'] = "without_met_Pattern_after_stp"
                     df.loc[c, 'Genes'] = gen
@@ -164,11 +142,7 @@ for l, Gen in enumerate(lista_fasta):
                     c += 1
                 if "without_start_stop" in dict_scape.keys():
                     count_pattern_sc = dict_epitopes(count_pattern_sc, hla_scape, epitope_scape)
-                    #count_pattern_sc.append(epitope_scape) 
                     df.loc[c, 'Epitope_type'] = 'scape_variant'
-                    #pos_raw_hla_df= HLA_patient_df['HLA'].values.tolist().index(hla_scape)
-                    #lista_alelos = HLA_patient_df['allele'].values.tolist()
-                    #df.loc[c, 'allele'] = lista_alelos[ pos_raw_hla_df]
                     df.loc[c, 'pattern_recover'] = "yes"
                     df.loc[c, 'pattern_pos_seq'] = 'without start-stop'
                     df.loc[c, 'Genes'] = gen
@@ -202,7 +176,6 @@ int(len(mutations_gen['Epitope_WT']))                df.loc[c, "origin"] =   ori
             if len(dict_wild) != 0:             
                 if "correct_orf" in dict_wild.keys():
                     count_pattern_wd = dict_epitopes(count_pattern_wd, hla_scape, epitope_wild)
-                    #count_pattern_wd.append(epitope_wild)
                     df.loc[c, 'Epitope_type'] = 'wild_variant'
                     df.loc[c, 'pattern_recover'] = "yes"
                     df.loc[c,'hla'] = hla_scape
@@ -216,7 +189,6 @@ int(len(mutations_gen['Epitope_WT']))                df.loc[c, "origin"] =   ori
                     c += 1
                 if "after_orf" in dict_wild.keys():
                     count_pattern_wd = dict_epitopes(count_pattern_wd, hla_scape, epitope_wild)
-                    #count_pattern_wd.append(epitope_wild)
                     df.loc[c, 'Epitope_type'] = 'wild_variant'
                     df.loc[c, 'pattern_recover'] = "yes"
                     df.loc[c, 'pattern_pos_seq'] = 'after orf'
@@ -230,9 +202,7 @@ int(len(mutations_gen['Epitope_WT']))                df.loc[c, "origin"] =   ori
                     c += 1
                 if "without_stop" in dict_wild.keys():
                     count_pattern_wd = dict_epitopes(count_pattern_wd, hla_scape, epitope_wild)
-                    #count_pattern_wd.append(epitope_wild)
                     df.loc[c, 'Epitope_type'] = 'wild_variant'
-                    #df.loc[c, 'allele'] = lista_alelos[ pos_raw_hla_df]
                     df.loc[c, 'pattern_recover'] = "yes"
                     df.loc[c, 'pattern_pos_seq'] = 'without stop'
                     df.loc[c, 'Genes'] = gen
@@ -244,7 +214,6 @@ int(len(mutations_gen['Epitope_WT']))                df.loc[c, "origin"] =   ori
                     df.loc[c, 'Donor id'] =  Patient
                 if "without_met_Pattern_before_stp" in dict_wild.keys():    
                     count_pattern_wd = dict_epitopes(count_pattern_wd, hla_scape, epitope_wild)
-                    #count_pattern_wd.append(epitope_wild)
                     df.loc[c, 'Epitope_type'] = 'wild_variant'
                     df.loc[c, 'pattern_recover'] = "yes"
                     df.loc[c,'hla'] = 'no'
@@ -259,7 +228,6 @@ int(len(mutations_gen['Epitope_WT']))                df.loc[c, "origin"] =   ori
                     c += 1
                 if "without_met_Pattern_after_stp" in dict_wild.keys():
                     count_pattern_wd = dict_epitopes(count_pattern_wd, hla_scape, epitope_wild)
-                    #count_pattern_wd.append(epitope_wild)
                     df.loc[c, 'Epitope_type'] = 'wild_variant'
                     df.loc[c, 'pattern_recover'] = "yes"
                     df.loc[c, 'pattern_pos_seq'] = 'without_met_Pattern_after_stp'
@@ -273,7 +241,6 @@ int(len(mutations_gen['Epitope_WT']))                df.loc[c, "origin"] =   ori
                     c += 1                
                 if "without_start_stop" in dict_wild.keys():
                    count_pattern_wd = dict_epitopes(count_pattern_wd, hla_scape, epitope_wild)
-                   #count_pattern_wd.append(epitope_wild)
                    df.loc[c, 'Epitope_type'] = 'wild_variant'
                    df.loc[c, 'pattern_recover'] = "yes"
                    df.loc[c, 'pattern_pos_seq'] = 'without start-stop'
@@ -307,7 +274,6 @@ int(len(mutations_gen['Epitope_WT']))                df.loc[c, "origin"] =   ori
             if int(index + 1) == int(len(HLA_patient_df['Epitope_WT'])):          
                 if len(count_pattern_sc)== 0:             
                     
-                    #print(f'{c} nada en gen {gen} y paciente {Patient}')
                     df.loc[c, 'Epitope_type'] = 'not found vr scape'
                     df.loc[c, 'Genes'] = gen
                     df.loc[c,'sequences'] = sequence.id 
