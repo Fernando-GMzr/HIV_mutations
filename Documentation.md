@@ -41,19 +41,20 @@ To run the script it is necessary to have the modules installed:
 ### Columns description
 
 
-**Columns:** data related to Donnor, HLA and Aminoacidic motivs related to wild and variant epitopes of protein.
+**Columns:** Data of HLA and Aminoacidic motivs related to wild and variant epitopes of protein.
 
-**Patient_ID:** Patient code used to filter the sequences to be identified.
 
-**HLA:** HLA  of donnor
+-**Patient_ID:** Patient code used to filter the sequences to be identified.
 
-**Variant_epitope:** motifs that belong to mutated epitopes
+-**HLA:** HLA  of donnor
 
-**Epitope_WT:** motifs that belong to "Wildtype" epitopes
+-**Variant_epitope:** motifs that belong to mutated epitopes
 
-**Protein:** Proteins related to motivs described.
+-**Epitope_WT:** motifs that belong to "Wildtype" epitopes
 
-*The metadata information of proteins, motifs epitope and hla was obtain from "HIV database", where the original database was transformed to filter and match with the inmunogenic charachteristic of each Donnor*.
+-**Protein:** Proteins related to motivs described.
+
+*The metadata information of proteins, motifs epitope and hla was obtain from "HIV database" (https://www.hiv.lanl.gov/content/immunology/index.html), where the original database was transformed to filter and match inmunogenic characteristic of each Donnor*.
 
 
 
