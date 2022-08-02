@@ -2,6 +2,9 @@
 # -*- coding: utf-8 -*-
 
 import os
+
+os.chdir('/home/fernando/Documentos/Epitopes_pipi/redesign_inmuno_hiv')
+
 import pandas as pd
 from Bio import SeqIO
 from Bio.Seq import Seq
@@ -13,7 +16,7 @@ import itertools
 import re
 from  functions_hiv import *
 
-os.chdir('/home/fernando/Documentos/Epitopes_pipi/redesign_inmuno_hiv')
+
 
 mutation = open('epitopes_corregido_2.csv')
 mutations = pd.read_csv(mutation)
@@ -324,4 +327,4 @@ int(len(mutations_gen['Epitope_WT']))                df.loc[c, "origin"] =   ori
                     df.loc[c,'pattern'] = 'no'
                     df.loc[c,'hla'] = 'no'
                     c += 1
-df.to_csv('patterns_4jul.csv')
+df.to_csv('patterns_1agoust.csv')
