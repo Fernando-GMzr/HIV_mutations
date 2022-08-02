@@ -77,6 +77,6 @@ HIV_search_patterns.py "input_HLA_donnor.csv" "output_mutation_found.csv"
 
 
 * Add other possibilities of input formats.
-* Configure HLA-related conditions to process mutation detection.
-* Adding specific classifiers according to mutations and proteins
+* Add options of detection in mutations related do HLA.
+* Adding more classifiers
 * Add graphical output of calculated statistics
