@@ -111,10 +111,8 @@ for l, Gen in enumerate(lista_fasta):
                     df.loc[c, 'Donor id'] =  Patient                                
                     c += 1
                 if "without_met_Pattern_before_stp" in dict_scape.keys():
-                    count_pattern_sc = dict_epitopes(count_pattern_sc, hla_scape, epitope_scape)
-                     
-                    df.loc[c, 'Epitope_type'] = 'scape_variant'
-                    
+                    count_pattern_sc = dict_epitopes(count_pattern_sc, hla_scape, epitope_scape)                     
+                    df.loc[c, 'Epitope_type'] = 'scape_variant'                    
                     df.loc[c, 'pattern_recover'] = "yes"
                     df.loc[c, 'pattern_pos_seq'] = 'without_met_Pattern_before_stp'
                     df.loc[c, 'Genes'] = gen
@@ -128,8 +126,7 @@ for l, Gen in enumerate(lista_fasta):
                 if "without_met_Pattern_after_stp" in dict_scape.keys():
                     count_pattern_sc = dict_epitopes(count_pattern_sc, hla_scape, epitope_scape)
                                                                    
-                    df.loc[c, 'Epitope_type'] = 'scape_variant'
-                    
+                    df.loc[c, 'Epitope_type'] = 'scape_variant'                    
                     df.loc[c, 'pattern_recover'] = "yes"
                     df.loc[c, 'pattern_pos_seq'] = "without_met_Pattern_after_stp"
                     df.loc[c, 'Genes'] = gen
