@@ -290,4 +290,4 @@ int(len(mutations_gen['Epitope_WT']))                df.loc[c, "origin"] =   ori
                     df.loc[c,'pattern'] = 'no'
                     df.loc[c,'hla'] = 'no'
                     c += 1
-df.to_csv('patterns_1agoust.csv')
+df.to_csv('patterns_1agoust.csv', index=False)
