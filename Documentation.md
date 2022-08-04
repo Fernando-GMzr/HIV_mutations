@@ -1,7 +1,7 @@
 
 ## Documentation
 
-## script [flowchart](https://github.com/Fernando-GMzr/HIV_mutations/blob/master/fluxogram.png)
+## Script [flowchart](https://github.com/Fernando-GMzr/HIV_mutations/blob/master/fluxogram.png)
 
 ## Installation and getting started
 
@@ -44,15 +44,15 @@ To run the script it is necessary to have the modules installed:
 **Columns:** Data of HLA and Aminoacidic motivs related to wild and variant epitopes of protein.
 
 
--**Patient_ID:** Patient code used to filter the sequences to be identified.
+* **Patient_ID:** Patient code used to filter the sequences to be identified.
 
--**HLA:** HLA  of donnor
+* **HLA:** HLA  of donnor
 
--**Variant_epitope:** motifs that belong to mutated epitopes
+* **Variant_epitope:** motifs that belong to mutated epitopes
 
--**Epitope_WT:** motifs that belong to "Wildtype" epitopes
+* **Epitope_WT:** motifs that belong to "Wildtype" epitopes
 
--**Protein:** Proteins related to motivs described.
+* **Protein:** Proteins related to motivs described.
 
 *The metadata information of proteins, motifs epitope and hla was obtain from "HIV database" (https://www.hiv.lanl.gov/content/immunology/index.html), where the original database was transformed to filter and match inmunogenic characteristic of each Donnor*.
 
@@ -60,7 +60,7 @@ To run the script it is necessary to have the modules installed:
 
 ### Running
 
-In a directory containing fasta files and database in csv, run:
+In a directory containing fasta files and csv, run:
 
 ```python
 HIV_search_patterns.py "input_HLA_donnor.csv" "output_mutation_found.csv"
@@ -78,6 +78,5 @@ HIV_search_patterns.py "input_HLA_donnor.csv" "output_mutation_found.csv"
 
 
 * Add other possibilities of input formats.
-* Add options of detection in mutations related do HLA.
-* Adding more classifiers
+* Add options of detection to mutations related do HLA.
 * Add graphical output of calculated statistics

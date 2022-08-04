@@ -1,8 +1,5 @@
 
 
-# HIV_mutations_scape
-
-
 # HIV mutation classifier
 
 Part of this script was used to obtain the results of HIV protein mutation results from treated and untreated donors published in:
