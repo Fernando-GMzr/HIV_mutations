@@ -9,17 +9,19 @@ import pandas as pd
 import sys
 import os   
 
-os.chdir('/home/fernando/Documentos/Epitopes_pipi/redesign_inmuno_hiv')
-os.listdir()
+current= os.getcwd() 
+os.chdir(current)
+#os.chdir('/home/fernando/Documentos/Epitopes_pipi/redesign_inmuno_hiv')
+#s.listdir()
 
 
-dataset = pd.read_csv(csv_output) 
-output= pd.read_csv(csv_polexpresion) 
+#ataset = pd.read_csv(csv_output) 
+#output= pd.read_csv(csv_polexpression) 
 #dataset = pd.read_csv('patterns_3sptember.csv')
 #csv_polexpresion=patterns_match_3sptember.csv'
-dataset.columns
-len(dataset)
-def pol_express(dataset, output)
+#dataset.columns
+#len(dataset)
+def pol_express(dataset, output):
     g=["gag"]
     #Se filtran del dataset los genes correspondientes a pol
     gag = dataset[dataset.Genes.isin(g)]
@@ -77,7 +79,7 @@ def pol_express(dataset, output)
     len(df_pol_Expresion)
     #df_pol_Expresion.iloc[:,[2,]]
     df_pol_Expresion.to_csv(output, index=False)
-    return print(f´"The process has ended , the file {output} has been saved")
+    return print(f' The process has ended , the file {output} has been saved')
 #len(df_pol_Expresion)
 #len(df5[df5.expression_GagNef.isin(["yes"])])
 #ex = ['yes']
