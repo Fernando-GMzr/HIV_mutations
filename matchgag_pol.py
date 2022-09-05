@@ -10,57 +10,72 @@ import sys
 import os   
 
 os.chdir('/home/fernando/Documentos/Epitopes_pipi/redesign_inmuno_hiv')
-dataset = pd.read_csv('patterns_1agoust.csv')
-dataset.columnsm
-g=["gag"]
-gag = dataset[dataset.Genes.isin(g)]
-gag['Genes']
-p=['pol']
-
-pol= dataset[dataset.Genes.isin(p)]
-len(pol)
-pol.columns
-filg= ["correct orf",'without stop']
-gagF =gag[gag.pattern_pos_seq.isin(filg)]
-len(gagF)
-pol.columns
-filP = ['without_met_Pattern_before_stp',"without start-stop"]
-polF =pol[pol.pattern_pos_seq.isin(filP)]
-
-len(gagF)
-len(polF)
-
-'''Fusion de la proteina GAG y la proteina POL previamente filtradas'''
-df3=pd.merge(gagF,polF, on='sequences', how='left', indicator=True)
-len(df3)
-len(df3.columns)
-#df3 = df3.iloc[:,[1]].drop_duplicates()
-len(df3)
-pd.unique(df3['sequences'])
-len(pd.unique(df4['sequences']))
-
-df4=df3.drop_duplicates(keep='first')
-len(df4)
-both=['both']
-df4= df4[df4._merge.isin(both)]
+os.listdir()
 
 
-'''Creo un dataset conteniendo unicamente los nombres de secuencias que mapearon para gag y pol'''
-#df4 = df4[["sequences","Genes_y"]]
-df4=df4[['Genes_y','sequences']].drop_duplicates()
-df4=df4.rename(columns={"Genes_y":"Genes"})
-df5=df4.assign(expression_pol="yes") ####
-#dataset["pattern_pos_seq"].unique
-#df5[['sequences', 'Genes', 'expression_GagNef']].nunique()
-#df5 = df5[['sequences', 'Genes', 'expression_GagNef']].nunique()
-#len(df5.drop_duplicates())
-#len(dataset)
-df5 = df5.drop_duplicates()
-
-#df_pol_Expresion.drop_duplicates()
-df_pol_Expresion= pd.merge(dataset,df5, on=['sequences',"Genes"], how='left', indicator= False)
-len(df_pol_Expresion)
-#df_pol_Expresion.iloc[:,[2,]]
-df_pol_Expresion.to_csv("patterns_matched2ago.csv", index=False)
+dataset = pd.read_csv(csv_output)
+#dataset = pd.read_csv('patterns_3sptember.csv')
+dataset.columns
+len(dataset)
+def pol_express(dataset)
+    g=["gag"]
+    #Se filtran del dataset los genes correspondientes a pol
+    gag = dataset[dataset.Genes.isin(g)]
+    gag['Genes']
+    p=['pol']
+    #Se filtran del dataset los genes correspondientes a gag' 
+    pol= dataset[dataset.Genes.isin(p)]
+    len(pol)
+    pol.columns
+    
+    # the sequences that meet the conditions "Pattern_in_orf",'without_stop' are filtered out.
+    
+    filg= ["Pattern_in_orf",'without_stop']
+    
+    gagF =gag[gag.pattern_pos_seq.isin(filg)]
+    len(gagF)
+    pol.columns
+    # the sequences that meet the conditions 'without_start_Pattern_before_stop', "without_start-stop" are filtered out, 
+    
+    filP = ['without_start_Pattern_before_stop',]
+    polF =pol[pol.pattern_pos_seq.isin(filP)]
+    
+    len(gagF)
+    len(polF)
+    
+    #Fusion of previously filtered GAG protein and POL protein
+    #A dataset is created containing only the names of sequences that mapped to gag and pol filtered:
+    df3=pd.merge(gagF,polF, on='sequences', how='left', indicator=True)
+    len(df3)
+    len(df3.columns)
+    #df3 = df3.iloc[:,[1]].drop_duplicates()
+    len(df3)
+    pd.unique(df3['sequences'])
+    
+    
+    #Duplicate rows are deleted:
+    
+    
+    df4=df3.drop_duplicates(keep='first')
+    len(df4)
+    both=['both']
+    df4= df4[df4._merge.isin(both)]
+    len(pd.unique(df4['sequences']))
+    
+    
+    
+    #df4 = df4[["sequences","Genes_y"]]
+    df4=df4[['Genes_y','sequences']].drop_duplicates()
+    len(df4)
+    df4=df4.rename(columns={"Genes_y":"Genes"})
+    df5=df4.assign(expression_pol="yes") ####
+    len(df5)
+    
+    df_pol_Expresion= pd.merge(dataset,df5, on=['sequences',"Genes"], how='left', indicator= False)
+    len(df_pol_Expresion)
+    #df_pol_Expresion.iloc[:,[2,]]
+    df_pol_Expresion.to_csv("patterns_matched3setember.csv", index=False)
 #len(df_pol_Expresion)
 #len(df5[df5.expression_GagNef.isin(["yes"])])
+#ex = ['yes']
+#len(df_pol_Expresion[df_pol_Expresion.expression_pol.isin(ex)])

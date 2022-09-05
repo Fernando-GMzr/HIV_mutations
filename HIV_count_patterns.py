@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-import os
 
-os.chdir('/home/fernando/Documentos/Epitopes_pipi/redesign_inmuno_hiv')
+import os
+current= os.getcwd() 
+os.chdir(current)
+#os.chdir('/home/fernando/Documentos/Epitopes_pipi/redesign_inmuno_hiv')
 
 import pandas as pd
 from Bio import SeqIO
@@ -18,7 +20,14 @@ from  functions_hiv import *
 
 
 
-mutation = open('epitopes_corregido_2.csv')
+if len(sys.argv) != 3:
+    raise SystemExit(f'correct usage: {sys.argv[0]} ' 'input csv, output csv', f'arguments now: {sys.argv}')            
+            
+csv_input = sys.argv[1]
+csv_output = sys.argv[2]
+            
+#mutation = open('epitopes_corregido_2.csv')
+mutation = open(csv_input)
 mutations = pd.read_csv(mutation)
 mutations.head()
 directorio = os.getcwd()
@@ -176,7 +185,7 @@ int(len(mutations_gen['Epitope_WT']))                df.loc[c, "origin"] =   ori
                     df.loc[c, 'Epitope_type'] = 'wild_variant'
                     df.loc[c, 'pattern_recover'] = "yes"
                     df.loc[c,'hla'] = hla_scape
-                    df.loc[c, 'pattern_pos_seq'] = 'correct orf'
+                    df.loc[c, 'pattern_pos_seq'] = 'Pattern_in_orf'
                     df.loc[c, 'Genes'] = gen
                     df.loc[c,'pattern'] = epitope_wild
                     df.loc[c,'sequences'] = sequence.id 
@@ -188,7 +197,7 @@ int(len(mutations_gen['Epitope_WT']))                df.loc[c, "origin"] =   ori
                     count_pattern_wd = dict_epitopes(count_pattern_wd, hla_scape, epitope_wild)
                     df.loc[c, 'Epitope_type'] = 'wild_variant'
                     df.loc[c, 'pattern_recover'] = "yes"
-                    df.loc[c, 'pattern_pos_seq'] = 'after orf'
+                    df.loc[c, 'pattern_pos_seq'] = 'Pattern_after_orf'
                     df.loc[c, 'Genes'] = gen
                     df.loc[c,'hla'] = hla_scape
                     df.loc[c,'pattern'] = epitope_wild
@@ -201,7 +210,7 @@ int(len(mutations_gen['Epitope_WT']))                df.loc[c, "origin"] =   ori
                     count_pattern_wd = dict_epitopes(count_pattern_wd, hla_scape, epitope_wild)
                     df.loc[c, 'Epitope_type'] = 'wild_variant'
                     df.loc[c, 'pattern_recover'] = "yes"
-                    df.loc[c, 'pattern_pos_seq'] = 'without stop'
+                    df.loc[c, 'pattern_pos_seq'] = 'without_stop'
                     df.loc[c, 'Genes'] = gen
                     df.loc[c,'hla'] = hla_scape
                     df.loc[c,'pattern'] = epitope_wild                                        
@@ -214,7 +223,7 @@ int(len(mutations_gen['Epitope_WT']))                df.loc[c, "origin"] =   ori
                     df.loc[c, 'Epitope_type'] = 'wild_variant'
                     df.loc[c, 'pattern_recover'] = "yes"
                     df.loc[c,'hla'] = 'no'
-                    df.loc[c, 'pattern_pos_seq'] = 'without_met_Pattern_before_stp'
+                    df.loc[c, 'pattern_pos_seq'] = 'without_start_Pattern_before_stop'
                     df.loc[c, 'Genes'] = gen
                     df.loc[c,'pattern'] = epitope_wild
                     df.loc[c,'hla'] = hla_scape
@@ -227,7 +236,7 @@ int(len(mutations_gen['Epitope_WT']))                df.loc[c, "origin"] =   ori
                     count_pattern_wd = dict_epitopes(count_pattern_wd, hla_scape, epitope_wild)
                     df.loc[c, 'Epitope_type'] = 'wild_variant'
                     df.loc[c, 'pattern_recover'] = "yes"
-                    df.loc[c, 'pattern_pos_seq'] = 'without_met_Pattern_after_stp'
+                    df.loc[c, 'pattern_pos_seq'] = 'without_start_Pattern_after_stop'
                     df.loc[c, 'Genes'] = gen
                     df.loc[c,'hla'] = hla_scape
                     df.loc[c,'pattern'] = epitope_wild
@@ -240,7 +249,7 @@ int(len(mutations_gen['Epitope_WT']))                df.loc[c, "origin"] =   ori
                    count_pattern_wd = dict_epitopes(count_pattern_wd, hla_scape, epitope_wild)
                    df.loc[c, 'Epitope_type'] = 'wild_variant'
                    df.loc[c, 'pattern_recover'] = "yes"
-                   df.loc[c, 'pattern_pos_seq'] = 'without start-stop'
+                   df.loc[c, 'pattern_pos_seq'] = 'without_start-stop'
                    df.loc[c, 'Genes'] = gen
                    df.loc[c,'hla'] = hla_scape
                    df.loc[c,'pattern'] = epitope_wild                                        
@@ -271,7 +280,7 @@ int(len(mutations_gen['Epitope_WT']))                df.loc[c, "origin"] =   ori
             if int(index + 1) == int(len(HLA_patient_df['Epitope_WT'])):          
                 if len(count_pattern_sc)== 0:             
                     
-                    df.loc[c, 'Epitope_type'] = 'not found vr scape'
+                    df.loc[c, 'Epitope_type'] = 'not_found_vr_scape'
                     df.loc[c, 'Genes'] = gen
                     df.loc[c,'sequences'] = sequence.id 
                     df.loc[c, "origin"] =   origin
@@ -281,7 +290,7 @@ int(len(mutations_gen['Epitope_WT']))                df.loc[c, "origin"] =   ori
                     df.loc[c,'hla'] = 'no'
                     c += 1
                 if len(count_pattern_wd)== 0:
-                    df.loc[c, 'Epitope_type'] = 'not found vr wild'
+                    df.loc[c, 'Epitope_type'] = 'not_found_vr_wild'
                     df.loc[c, 'Genes'] = gen
                     df.loc[c,'sequences'] = sequence.id 
                     df.loc[c, "origin"] =   origin
@@ -290,4 +299,6 @@ int(len(mutations_gen['Epitope_WT']))                df.loc[c, "origin"] =   ori
                     df.loc[c,'pattern'] = 'no'
                     df.loc[c,'hla'] = 'no'
                     c += 1
-df.to_csv('patterns_1agoust.csv', index=False)
+#df.to_csv('patterns_3sptember.csv', index=False)
+df.to_csv(csv_outout , index=False)
+sys.exit('The process has ended')
