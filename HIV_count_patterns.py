@@ -17,15 +17,18 @@ import pandas as pd
 import itertools
 import re
 from  functions_hiv import *
+from  matchgag_pol import *
 
 
-
-if len(sys.argv) != 3:
+if len(sys.argv) < 3:
     raise SystemExit(f'correct usage: {sys.argv[0]} ' 'input csv, output csv', f'arguments now: {sys.argv}')            
             
 csv_input = sys.argv[1]
 csv_output = sys.argv[2]
-            
+
+if 'pol_express' in sys,argv[3]  :
+    activar= True   
+    output= sys.argv[4]  
 #mutation = open('epitopes_corregido_2.csv')
 mutation = open(csv_input)
 mutations = pd.read_csv(mutation)
@@ -300,5 +303,10 @@ int(len(mutations_gen['Epitope_WT']))                df.loc[c, "origin"] =   ori
                     df.loc[c,'hla'] = 'no'
                     c += 1
 #df.to_csv('patterns_3sptember.csv', index=False)
-df.to_csv(csv_outout , index=False)
-sys.exit('The process has ended')
+df.to_csv(csv_output, index=False)
+print(f' the first procces has ended')
+
+if activar and output:
+    pol_express(dataset, output)
+    
+sys.exit('The process has been completed')    
