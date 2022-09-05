@@ -26,7 +26,7 @@ if len(sys.argv) < 3:
 csv_input = sys.argv[1]
 csv_output = sys.argv[2]
 
-if 'pol_express' in sys,argv[3]  :
+if 'pol_express' in sys.argv[3]  :
     activar= True   
     output= sys.argv[4]  
 #mutation = open('epitopes_corregido_2.csv')
