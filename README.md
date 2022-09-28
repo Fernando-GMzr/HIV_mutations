@@ -26,6 +26,6 @@ After the patterns are identified, they are classified based on their potential 
 
 ## script [flowchart](https://github.com/Fernando-GMzr/HIV_mutations/blob/master/fluxogram.png)
 
-![flowchart](https://github.com/Fernando-GMzr/HIV_mutations/blob/master/fluxogram.png)
+![flowchart](https://github.com/Fernando-GMzr/HIV_mutations/blob/master/Fluxogram.png)
 
 
