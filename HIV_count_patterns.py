@@ -307,6 +307,6 @@ df.to_csv(csv_output, index=False)
 print(f' the first procces has ended')
 
 if activar and output:
-    pol_express(dataset, output)
+    pol_express(df, output)
     
 sys.exit('The process has been completed')    
