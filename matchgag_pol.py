@@ -34,14 +34,14 @@ def pol_express(dataset, output):
     
     # the sequences that meet the conditions "Pattern_in_orf",'without_stop' are filtered out.
     
-    filg= ["Pattern_in_orf",'without_stop']
+    filg= ["translated",'transl_no_stop_codon']
     
     gagF =gag[gag.pattern_pos_seq.isin(filg)]
     len(gagF)
     pol.columns
     # the sequences that meet the conditions 'without_start_Pattern_before_stop', "without_start-stop" are filtered out, 
     
-    filP = ['without_start_Pattern_before_stop',]
+    filP = ['translated','silent_prem_stop_codon']
     polF =pol[pol.pattern_pos_seq.isin(filP)]
     
     len(gagF)

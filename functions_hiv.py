@@ -94,7 +94,7 @@ def write_scape(position_scape, hla_scape, position_asteris, position_metionina,
                     if position_asteris!= -1:
                         if position_scape < position_asteris:
                             
-                            return dict(correct_orf = True)
+                            return dict(translated = True)
                         else:
                             
                             return dict(after_orf= True)
@@ -135,7 +135,7 @@ def write_wild(position_wild,hla_scape, position_asteris, position_metionina,   
                if position_metionina== 0:
                    if position_asteris != -1:
                        if position_wild < position_asteris:
-                           return dict(correct_orf= True)
+                           return dict(translated= True)
                        else:
                            return dict(after_orf= True)
                    else:

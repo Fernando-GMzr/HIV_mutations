@@ -81,11 +81,11 @@ for l, Gen in enumerate(lista_fasta):
             
             
             if len(dict_scape) != 0:            
-                if "correct_orf" in dict_scape.keys():
+                if "translated" in dict_scape.keys():
                     count_pattern_sc = dict_epitopes(count_pattern_sc, hla_scape, epitope_scape) #.append(hla_scape)
                     df.loc[c, 'Epitope_type'] = 'scape_variant'
                     df.loc[c, 'pattern_recover'] = "yes"
-                    df.loc[c, 'pattern_pos_seq'] = 'correct orf'
+                    df.loc[c, 'pattern_pos_seq'] = 'translated'
                     df.loc[c, 'Genes'] = gen
                     df.loc[c,'hla'] = hla_scape
                     df.loc[c,'pattern'] = epitope_scape
@@ -98,7 +98,7 @@ for l, Gen in enumerate(lista_fasta):
                     count_pattern_sc = dict_epitopes(count_pattern_sc, hla_scape, epitope_scape)
                     df.loc[c, 'Epitope_type'] = 'scape_variant'
                     df.loc[c, 'pattern_recover'] = "yes"
-                    df.loc[c, 'pattern_pos_seq'] = 'after orf'
+                    df.loc[c, 'pattern_pos_seq'] = 'silent_prem_stop_codon'
                     df.loc[c, 'Genes'] = gen
                     df.loc[c,'hla'] = hla_scape
                     df.loc[c,'pattern'] = epitope_scape                
@@ -113,7 +113,7 @@ for l, Gen in enumerate(lista_fasta):
                     df.loc[c, 'Epitope_type'] = 'scape_variant'
                     
                     df.loc[c, 'pattern_recover'] = "yes"
-                    df.loc[c, 'pattern_pos_seq'] = 'without stop'
+                    df.loc[c, 'pattern_pos_seq'] = 'transl_no_stop_codon'
                     df.loc[c, 'Genes'] = gen
                     df.loc[c,'hla'] = hla_scape
                     df.loc[c,'pattern'] = epitope_scape                
@@ -126,7 +126,7 @@ for l, Gen in enumerate(lista_fasta):
                     count_pattern_sc = dict_epitopes(count_pattern_sc, hla_scape, epitope_scape)                     
                     df.loc[c, 'Epitope_type'] = 'scape_variant'                    
                     df.loc[c, 'pattern_recover'] = "yes"
-                    df.loc[c, 'pattern_pos_seq'] = 'without_met_Pattern_before_stp'
+                    df.loc[c, 'pattern_pos_seq'] = 'silent_no_start_codon'
                     df.loc[c, 'Genes'] = gen
                     df.loc[c,'hla'] = hla_scape
                     df.loc[c,'pattern'] = epitope_scape                    
@@ -140,7 +140,7 @@ for l, Gen in enumerate(lista_fasta):
                                                                    
                     df.loc[c, 'Epitope_type'] = 'scape_variant'                    
                     df.loc[c, 'pattern_recover'] = "yes"
-                    df.loc[c, 'pattern_pos_seq'] = "without_met_Pattern_after_stp"
+                    df.loc[c, 'pattern_pos_seq'] = "silent_no_start_codon_prem_stop_codon"
                     df.loc[c, 'Genes'] = gen
                     df.loc[c,'hla'] = hla_scape
                     df.loc[c,'pattern'] = epitope_scape                    
@@ -153,7 +153,7 @@ for l, Gen in enumerate(lista_fasta):
                     count_pattern_sc = dict_epitopes(count_pattern_sc, hla_scape, epitope_scape)
                     df.loc[c, 'Epitope_type'] = 'scape_variant'
                     df.loc[c, 'pattern_recover'] = "yes"
-                    df.loc[c, 'pattern_pos_seq'] = 'without start-stop'
+                    df.loc[c, 'pattern_pos_seq'] = 'silent_no_start_codon_no_stop_codon'
                     df.loc[c, 'Genes'] = gen
                     df.loc[c,'hla'] = hla_scape
                     df.loc[c,'pattern'] = epitope_scape
@@ -183,7 +183,7 @@ int(len(mutations_gen['Epitope_WT']))                df.loc[c, "origin"] =   ori
             
             
             if len(dict_wild) != 0:             
-                if "correct_orf" in dict_wild.keys():
+                if "translated" in dict_wild.keys():
                     count_pattern_wd = dict_epitopes(count_pattern_wd, hla_scape, epitope_wild)
                     df.loc[c, 'Epitope_type'] = 'wild_variant'
                     df.loc[c, 'pattern_recover'] = "yes"
@@ -200,7 +200,7 @@ int(len(mutations_gen['Epitope_WT']))                df.loc[c, "origin"] =   ori
                     count_pattern_wd = dict_epitopes(count_pattern_wd, hla_scape, epitope_wild)
                     df.loc[c, 'Epitope_type'] = 'wild_variant'
                     df.loc[c, 'pattern_recover'] = "yes"
-                    df.loc[c, 'pattern_pos_seq'] = 'Pattern_after_orf'
+                    df.loc[c, 'pattern_pos_seq'] = 'silent_prem_stop_codon'
                     df.loc[c, 'Genes'] = gen
                     df.loc[c,'hla'] = hla_scape
                     df.loc[c,'pattern'] = epitope_wild
@@ -213,7 +213,7 @@ int(len(mutations_gen['Epitope_WT']))                df.loc[c, "origin"] =   ori
                     count_pattern_wd = dict_epitopes(count_pattern_wd, hla_scape, epitope_wild)
                     df.loc[c, 'Epitope_type'] = 'wild_variant'
                     df.loc[c, 'pattern_recover'] = "yes"
-                    df.loc[c, 'pattern_pos_seq'] = 'without_stop'
+                    df.loc[c, 'pattern_pos_seq'] = 'transl_no_stop_codon'
                     df.loc[c, 'Genes'] = gen
                     df.loc[c,'hla'] = hla_scape
                     df.loc[c,'pattern'] = epitope_wild                                        
@@ -226,7 +226,7 @@ int(len(mutations_gen['Epitope_WT']))                df.loc[c, "origin"] =   ori
                     df.loc[c, 'Epitope_type'] = 'wild_variant'
                     df.loc[c, 'pattern_recover'] = "yes"
                     df.loc[c,'hla'] = 'no'
-                    df.loc[c, 'pattern_pos_seq'] = 'without_start_Pattern_before_stop'
+                    df.loc[c, 'pattern_pos_seq'] = 'silent_no_start_codon'
                     df.loc[c, 'Genes'] = gen
                     df.loc[c,'pattern'] = epitope_wild
                     df.loc[c,'hla'] = hla_scape
@@ -239,7 +239,7 @@ int(len(mutations_gen['Epitope_WT']))                df.loc[c, "origin"] =   ori
                     count_pattern_wd = dict_epitopes(count_pattern_wd, hla_scape, epitope_wild)
                     df.loc[c, 'Epitope_type'] = 'wild_variant'
                     df.loc[c, 'pattern_recover'] = "yes"
-                    df.loc[c, 'pattern_pos_seq'] = 'without_start_Pattern_after_stop'
+                    df.loc[c, 'pattern_pos_seq'] = 'silent_no_start_codon_prem_stop_codon'
                     df.loc[c, 'Genes'] = gen
                     df.loc[c,'hla'] = hla_scape
                     df.loc[c,'pattern'] = epitope_wild
@@ -252,7 +252,7 @@ int(len(mutations_gen['Epitope_WT']))                df.loc[c, "origin"] =   ori
                    count_pattern_wd = dict_epitopes(count_pattern_wd, hla_scape, epitope_wild)
                    df.loc[c, 'Epitope_type'] = 'wild_variant'
                    df.loc[c, 'pattern_recover'] = "yes"
-                   df.loc[c, 'pattern_pos_seq'] = 'without_start-stop'
+                   df.loc[c, 'pattern_pos_seq'] = 'silent_no_start_codon_no_stop_codon'
                    df.loc[c, 'Genes'] = gen
                    df.loc[c,'hla'] = hla_scape
                    df.loc[c,'pattern'] = epitope_wild                                        
