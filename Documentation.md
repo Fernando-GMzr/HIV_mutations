@@ -38,6 +38,8 @@ To run the script it is necessary to have the modules installed:
 
 *This dataset comes from merging the information of the HLA donors with the dataset of epitope patterns of the "los alamos" database.*
 
+*  *Each dataset with information on the donor, hla and wild and variant epitope pattern were combined in a single dataset (see available script join_variant_wild_DS.R") in order to gather the information in a single input. Although the combination generated epitope patterns duplicates, the python scripts filters patterns in order to analyze each pattern corresponding to HLA and donor only once.*
+
 ### Columns description
 
 
