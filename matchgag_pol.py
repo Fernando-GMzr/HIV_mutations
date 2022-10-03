@@ -12,36 +12,38 @@ import os
 current= os.getcwd() 
 os.chdir(current)
 #os.chdir('/home/fernando/Documentos/Epitopes_pipi/redesign_inmuno_hiv')
-#s.listdir()
+#os.listdir()
 
 
-#ataset = pd.read_csv(csv_output) 
+#dataset = pd.read_csv('3_octubre_detect.csv') 
 #output= pd.read_csv(csv_polexpression) 
 #dataset = pd.read_csv('patterns_3sptember.csv')
-#csv_polexpresion=patterns_match_3sptember.csv'
+#csv_polexpresion=patterns_match_3oct.csv'
 #dataset.columns
 #len(dataset)
+
+''' The following function filters the sequences of the gag and pol genes, according to the conditions that allow the expression of pol. '''
 def pol_express(dataset, output):
     g=["gag"]
-    #Se filtran del dataset los genes correspondientes a pol
+    #Genes corresponding to gag are filtered from the dataset
     gag = dataset[dataset.Genes.isin(g)]
     gag['Genes']
     p=['pol']
-    #Se filtran del dataset los genes correspondientes a gag' 
+    #Genes corresponding to pol are filtered from the dataset
     pol= dataset[dataset.Genes.isin(p)]
     len(pol)
     pol.columns
     
-    # the sequences that meet the conditions "Pattern_in_orf",'without_stop' are filtered out.
+    # the sequences that meet the conditions "translated",'transl_no_stop_codon' are filtered out.
     
     filg= ["translated",'transl_no_stop_codon']
     
     gagF =gag[gag.pattern_pos_seq.isin(filg)]
     len(gagF)
     pol.columns
-    # the sequences that meet the conditions 'without_start_Pattern_before_stop', "without_start-stop" are filtered out, 
+    # the sequences that meet the conditions 'silent_no_start_codon', "silent_no_start_codon_no_stop_codon" are filtered out, 
     
-    filP = ['translated','silent_prem_stop_codon']
+    filP = ['silent_no_start_codon', "silent_no_start_codon_no_stop_codon"]
     polF =pol[pol.pattern_pos_seq.isin(filP)]
     
     len(gagF)
@@ -80,6 +82,8 @@ def pol_express(dataset, output):
     #df_pol_Expresion.iloc[:,[2,]]
     df_pol_Expresion.to_csv(output, index=False)
     return print(f' The process has ended , the file {output} has been saved')
+
+#pol_express(dataset, "patterns_match_3oct.csv")
 #len(df_pol_Expresion)
 #len(df5[df5.expression_GagNef.isin(["yes"])])
 #ex = ['yes']
