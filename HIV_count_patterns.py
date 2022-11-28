@@ -30,13 +30,14 @@ if 'pol_express' in sys.argv[3]  :
     activar= True   
     output= sys.argv[4]  
 #mutation = open('epitopes_corregido_2.csv')
+#mutation = open('input_donnor_Fusion_epitope_info.csv')
 mutation = open(csv_input)
 mutations = pd.read_csv(mutation)
 mutations.head()
 directorio = os.getcwd()
 lista_fasta = get_fastas(directorio)
 print(lista_fasta)
-lista_fasta = lista_fasta[::-1]
+#lista_fasta = lista_fasta[::-1]
 lista_fasta = lista_fasta[0:3]
 Gen = lista_fasta
 df = pd.DataFrame()  

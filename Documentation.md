@@ -29,7 +29,7 @@ To run the script it is necessary to have the modules installed:
 
  Protein epitope variant and related HLA
 
-| HLA   | Variant Epitope | Protein |
+| HLA   | Variant_Epitope | Protein |
 |-------|-----------------|---------|
 | A*11  | ACQGVGGPSHK     | Gag     |
 | A*02  | ALYNTAAAL       | Gag     |
@@ -41,7 +41,7 @@ To run the script it is necessary to have the modules installed:
 
 * Protein epitope Wild type and related HLA
 
-| HLA   | Epitope WT  | Protein |
+| HLA   | Epitope_WT  | Protein |
 |-------|-------------|---------|
 | B*08  | ELRSLYNTV   | Gag     |
 | A*30  | RSLYNTVATLY | Gag     |
@@ -125,12 +125,12 @@ To run the script it is necessary to have the modules installed:
 In a directory containing fasta files and csv, run in terminal:
 
 ``` python 
-python HIV_count_patterns.py "input_HLA_donnor.csv" "output_mutation_found.csv" 
+python HIV_count_patterns.py "input_donnor_Fusion_epitope_info.csv" "output_mutation_found.csv" 
 ```
 *If it is required to evaluate the expressed pol sequences (according to the conditions of the analyzed gag sequences of the same molecule), the arguments must be added in the command line:*
 
 ``` python 
-python HIV_count_patterns.py "input_HLA_donnor.csv" "output_patten_found.csv" "pol_express"  "output_gag_pol_expression.csv"
+python HIV_count_patterns.py "input_donnor_Fusion_epitope_info.csv" "output_patten_found.csv" "pol_express"  "output_gag_pol_expression.csv"
 ```
 * **"pol_express":** adding this argument calls a new function to evaluate the expression of pol depending on the conditions of gag.
 

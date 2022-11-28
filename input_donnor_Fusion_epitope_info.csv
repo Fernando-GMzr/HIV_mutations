@@ -1,4 +1,4 @@
-Patient_ID,allele_x,HLA,Variant Epitope ,Protein,allele_y,Epitope WT
+Patient_ID,allele_x,HLA,Variant_Epitope,Protein,allele_y,Epitope_WT
 1292,A.allele.1,A*29,,,,
 1292,A.allele.2,A*31,,,A.allele.2,
 1292,B.allele.1,B*35,NPPIPVGEIY,Gag,B.allele.1,NSSKVSQNY
