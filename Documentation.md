@@ -86,7 +86,7 @@ To run the script it is necessary to have the modules installed:
 
 ## Structure of data input
 
-* The Donnor-HLA-WT_epitope and Donnor-HAL_Variant_epitope was join in one dataset.
+* The Donnor_HLA_WT_epitope and Donnor_HLA_Variant_epitope was join in one dataset.
 
 **The input format maintains the following structure:**
 
