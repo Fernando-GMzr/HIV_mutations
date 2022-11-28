@@ -25,7 +25,7 @@ To run the script it is necessary to have the modules installed:
 
 ## Preparation data input
 
-*Dataset retrieve and process from "Los alamos"
+* Dataset retrieve and process from "Los alamos"
 
  Protein epitope variant and related HLA
 
@@ -62,7 +62,8 @@ To run the script it is necessary to have the modules installed:
 ...
 
 * The dataset of HLA donnor was matched  with information of epitopes variant and wild , generating two dataset.
-** Donnor HLA-match to HLA-variant epitope:
+
+**Donnor HLA-match to HLA-variant epitope:**
 
 | Patient_ID | allele     | HLA  | Variant_Epitope | Protein |
 |------------|------------|------|-----------------|---------|
@@ -72,7 +73,7 @@ To run the script it is necessary to have the modules installed:
 | 2241       | A.allele.1 | A*03 | KIRLRPGGQ       | Gag     |
 ...
 
-** Donnor-HLA match to HLA-Wild type epitope:
+**Donnor-HLA match to HLA-Wild type epitope:**
 
 | Patient_ID | allele     | HLA  | Epitope_WT | Protein |
 |------------|------------|------|------------|---------|
@@ -85,9 +86,9 @@ To run the script it is necessary to have the modules installed:
 
 ## Structure of data input
 
-*The Donnor-HLA-WT_epitope and Donnor-HAL_Variant_epitope was join in one dataset.
+* The Donnor-HLA-WT_epitope and Donnor-HAL_Variant_epitope was join in one dataset.
 
-*The input format maintains the following structure:*
+**The input format maintains the following structure:**
 
 | Patient_ID | allele     | HLA  | Variant_Epitope | Protein | Epitope_WT |
 |------------|------------|------|-----------------|---------|------------|
@@ -124,12 +125,12 @@ To run the script it is necessary to have the modules installed:
 In a directory containing fasta files and csv, run in terminal:
 
 ``` python 
-python HIV_search_patterns.py "input_HLA_donnor.csv" "output_mutation_found.csv" 
+python HIV_count_patterns.py "input_HLA_donnor.csv" "output_mutation_found.csv" 
 ```
 *If it is required to evaluate the expressed pol sequences (according to the conditions of the analyzed gag sequences of the same molecule), the arguments must be added in the command line:*
 
 ``` python 
-python HIV_search_patterns.py "input_HLA_donnor.csv" "output_patten_found.csv" "pol_express"  "output_gag_pol_expression.csv"
+python HIV_count_patterns.py "input_HLA_donnor.csv" "output_patten_found.csv" "pol_express"  "output_gag_pol_expression.csv"
 ```
 * **"pol_express":** adding this argument calls a new function to evaluate the expression of pol depending on the conditions of gag.
 

@@ -27,5 +27,5 @@ Donnor.head()
 Donnor_ep_VR=pd.merge(Donnor,EP_VR, on='HLA', how='left')
 Donnor_ep_WT=pd.merge(Donnor,EP_WT, on='HLA', how='left')
 
-Donnor_VR_WT = pd.merge(Donnor_ep_VR, Donnor_ep_WT, on=('Patient_ID','HLA', 'Protein'), how='left')
-Donnor_VR_WT.to_csv('fusion_donnor_epitop2.csv', index=False)
+Donnor_VR_WT = pd.merge(Donnor_ep_VR, Donnor_ep_WT, on=('Patient_ID','HLA', 'Protein'), how ='outer' )
+Donnor_VR_WT.to_csv('fusion_donnor_epitop3.csv', index=False)
