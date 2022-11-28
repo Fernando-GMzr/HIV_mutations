@@ -35,17 +35,18 @@ To run the script it is necessary to have the modules installed:
 
 * Dataset HLA information related to donnor
 
- Were combined  as shown in the figure:
 
-## script [Dataset fusion](https://github.com/Fernando-GMzr/HIV_mutations/blob/master/Figure1.png)
+**Were combined  as shown in the figure:**
+
+
 ![Figure 1](https://github.com/Fernando-GMzr/HIV_mutations/blob/master/Figure1.png)
 
 * The dataset of HLA donnor was matched  with information of epitopes variant and wild , generating two dataset.
 
 **Donnor HLA-match to HLA-variant epitope** and  **Donnor-HLA match to HLA-Wild type epitope:**
-The process was carried out as shown in figure 2:
 
-## script [Dataset fusion](https://github.com/Fernando-GMzr/HIV_mutations/blob/master/Figure2.png)
+**The process was carried out as shown in figure 2:**
+
 ![Figure 2](https://github.com/Fernando-GMzr/HIV_mutations/blob/master/Figure2.png)
 
 ## Structure of data input
