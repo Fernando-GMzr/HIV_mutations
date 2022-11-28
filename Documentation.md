@@ -43,7 +43,7 @@ To run the script it is necessary to have the modules installed:
 
 * The dataset of HLA donnor was matched  with information of epitopes variant and wild , generating two dataset.
 
-**Donnor HLA-match to HLA-variant epitope** and  **Donnor-HLA match to HLA-Wild type epitope:**
+**Donnor-HLA** match to **HLA-variant epitope** and  **Donnor-HLA** match to **HLA-Wild type epitope:**
 
 **The process was carried out as shown in figure 2:**
 
