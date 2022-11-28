@@ -27,61 +27,24 @@ To run the script it is necessary to have the modules installed:
 
 * Dataset retrieve and process from "Los alamos"
 
- Protein epitope variant and related HLA
+ The datasets corresponding to:
 
-| HLA   | Variant_Epitope | Protein |
-|-------|-----------------|---------|
-| A*11  | ACQGVGGPSHK     | Gag     |
-| A*02  | ALYNTAAAL       | Gag     |
-| B*08  | DCRTILKAL       | Gag     |
-| B*08  | DIYKRWII        | Gag     |
-| B*14  | DRFYKILRA       | Gag     |
-...
-
+* Protein epitope variant and related HLA
 
 * Protein epitope Wild type and related HLA
 
-| HLA   | Epitope_WT  | Protein |
-|-------|-------------|---------|
-| B*08  | ELRSLYNTV   | Gag     |
-| A*30  | RSLYNTVATLY | Gag     |
-| B*63  | RSLYNTVATLY | Gag     |
-| B*58  | RSLYNTVATLY | Gag     |
-| A*02  | SLYNTVATL   | Gag     |
-...
+* Dataset HLA information related to donnor
 
-* Dataset HLA information related to donnor:
+ Were combined  as shown in the figure:
 
-| Patient_ID | allele     | HLA  |
-|------------|------------|------|
-| 1292       | A.allele.1 | A*29 |
-| 1408       | A.allele.1 | A*01 |
-| 1756       | A.allele.1 | A*03 |
-| 2208       | A.allele.1 | A*01 |
-| 2241       | A.allele.1 | A*03 |
-...
+## script [Dataset fusion](https://github.com/Fernando-GMzr/HIV_mutations/blob/master/Fusion_1.jpg)
 
 * The dataset of HLA donnor was matched  with information of epitopes variant and wild , generating two dataset.
 
-**Donnor HLA-match to HLA-variant epitope:**
+**Donnor HLA-match to HLA-variant epitope** and  **Donnor-HLA match to HLA-Wild type epitope:**
+The process was carried out as shown in figure 2:
 
-| Patient_ID | allele     | HLA  | Variant_Epitope | Protein |
-|------------|------------|------|-----------------|---------|
-| 1756       | A.allele.1 | A*03 | KIRLRPGGQ       | Gag     |
-| 1756       | A.allele.1 | A*03 | KIRLRPGGR       | Gag     |
-| 1756       | A.allele.1 | A*03 | RIRLRPGGK       | Gag     |
-| 2241       | A.allele.1 | A*03 | KIRLRPGGQ       | Gag     |
-...
-
-**Donnor-HLA match to HLA-Wild type epitope:**
-
-| Patient_ID | allele     | HLA  | Epitope_WT | Protein |
-|------------|------------|------|------------|---------|
-| 1292       | A.allele.1 | A*29 | LYNTVATLY  | Gag     |
-| 1292       | A.allele.1 | A*29 | YFPDWQNYT  | Nef     |
-| 1408       | A.allele.1 | A*01 | NA         | NA      |
-| 1756       | A.allele.1 | A*03 | KIRLRPGGK  | Gag     |
-...
+## script [Dataset fusion](https://github.com/Fernando-GMzr/HIV_mutations/blob/master/Fusion_2.jpg)
 
 
 ## Structure of data input
