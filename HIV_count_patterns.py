@@ -181,7 +181,8 @@ for l, Gen in enumerate(lista_fasta):
 int(len(mutations_gen['Epitope_WT']))                df.loc[c, "origin"] =   origin
                 df.loc[c, 'Donor id'] =  Patient'''
             
-            
+            #if len(dict_scape) == 0:
+                    #c += 1
             
             if len(dict_wild) != 0:             
                 if "translated" in dict_wild.keys():
@@ -279,7 +280,9 @@ int(len(mutations_gen['Epitope_WT']))                df.loc[c, "origin"] =   ori
                 #df.loc[c,'overlap'] = count
                 df.loc[c, "origin"] =   origin
                 df.loc[c, 'Donor id'] =  Patient"""
-            
+            #if len(dict_scape) == 0:
+                #c += 1
+                
             
             if int(index + 1) == int(len(HLA_patient_df['Epitope_WT'])):          
                 if len(count_pattern_sc)== 0:             
@@ -311,3 +314,4 @@ if activar and output:
     pol_express(df, output)
     
 sys.exit('The process has been completed')    
+
